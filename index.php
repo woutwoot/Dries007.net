@@ -58,8 +58,8 @@
 		<meta name="author" content="Dries007">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<!-- Le styles -->
-		<link href="assets/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
-		<link href="assets/css/font-awesome.css" rel="stylesheet">
+		<link href="/assets/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+		<link href="/assets/css/font-awesome.css" rel="stylesheet">
 		<style type="text/css">
 			/* Custom container */
 			.container-narrow {
