@@ -23,20 +23,20 @@
 	$links = array(
 		"Online profiles" => array(
 			new link("Home", "http://dries007.net", "globe"),
-			new link("Github", "https://github.com/dries007", "github"),
-			new link("Bitbucket", "https://bitbucket.com/dries007", "bitbucket"),
-			new link("Youtube", "https://www.youtube.com/user/driesk007", "youtube-play"),
-			new link("Twitter", "https://twitter.com/driesk007", "twitter"),
+			new link("Github", "https://github.com/dries007/", "github"),
+			new link("Bitbucket", "https://bitbucket.com/dries007/", "bitbucket"),
+			new link("Youtube", "https://www.youtube.com/user/driesk007/", "youtube-play"),
+			new link("Twitter", "https://twitter.com/driesk007/", "twitter"),
 			new link("Email", "#contactModal", "envelope", "data-toggle=\"modal\"")
 		),
 		"Links" => array(
 			new link("dtools.net", "http://dtools.net", "wrench"),
-			new link("Downloads", "/downloads", "download-alt", ""),
-            new link("Screenshots", "/screenshots", "screenshot", ""),
-            new link("Geogebra", "/geogebra", "superscript", ""),
-			new link("Minecraft Capes", "/capes", "bookmark", ""),
-			new link("The Hacker Manifesto", "/manifesto", "quote-left", ""),
-			new link("Graph", "/graph", "pencil", "")
+			new link("Downloads", "/downloads/", "download-alt", ""),
+            new link("Screenshots", "/screenshots/", "screenshot", ""),
+            new link("Geogebra", "/geogebra/", "superscript", ""),
+			new link("Minecraft Capes", "/capes/", "bookmark", ""),
+			new link("The Hacker Manifesto", "/manifesto/", "quote-left", ""),
+			new link("Graph", "/graph/", "pencil", "")
 		)
 	);
 	
@@ -58,8 +58,8 @@
 		<meta name="author" content="Dries007">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<!-- Le styles -->
-		<link href="/assets/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
-		<link href="/assets/css/font-awesome.css" rel="stylesheet">
+        <link href="/assets/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+        <link href="/assets/css/font-awesome.css" rel="stylesheet">
 		<style type="text/css">
 			/* Custom container */
 			.container-narrow {
@@ -188,7 +188,7 @@
 			<div class="container">
 				<p class="muted credit">
 					<a href="http://dries007.net">&copy; Dries007</a> <? echo date("Y")?>. Website source available <a href="https://github.com/dries007/Dries007.net">here.</a><br>
-					Build with <a href="https://twitter.github.io/bootstrap/"><i class="icon-github"></i> Bootstrap</a> & <a href="https://fortawesome.github.io/Font-Awesome/"><i class="icon-flag"></i> Font Awesome</a> in <? $end = microtime(true); echo round(($end - $start), 4);?> sec.
+					Built with <a href="https://twitter.github.io/bootstrap/"><i class="icon-github"></i> Bootstrap</a> & <a href="https://fortawesome.github.io/Font-Awesome/"><i class="icon-flag"></i> Font Awesome</a> in <? $end = microtime(true); echo round(($end - $start), 4);?> sec.
 				</p>
 			  </div>
 		</div>
@@ -207,7 +207,7 @@
 			</div>
 		</div>
 		<!-- End Contact modal -->
-		<script src="assets/js/jquery.js"></script>
+        <script src="assets/js/jquery.js"></script>
 		<script src="assets/js/bootstrap.min.js"></script>
         <script type="text/javascript">
         var ssl = true;
