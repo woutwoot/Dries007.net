@@ -1,8 +1,29 @@
 <?
+
 if (strpos(strtolower(PHP_OS), "win") === false)
 	$loads = sys_getloadavg();
-else
-	$loads = Array(0.55,0.7,1);
+
+if (isset($_GET["progressbars"]))
+{
+    echo json_encode(@getPBObject());
+    die();
+}
+
+function getPBObject()
+{
+        $load["1 min"] = getLoad(0);
+    	$load["5 min"] = getLoad(1);
+    	$load["15 min"] = getLoad(2);
+	$responce["load"] = $load;
+	
+    $responce["ram"] = getFreeRam();
+    
+        $disk["Root"] = getDiskspace("/");
+	    $disk["Data"] = getDiskspace("/data");
+    $responce["disk"] = $disk;
+    
+    return $responce;
+}
 	
 function getSystemMemInfo()
 {       
@@ -13,24 +34,6 @@ function getSystemMemInfo()
     	$meminfo[$key] = trim($val);
     }
     return $meminfo;
-}
-
-function makeDiskBars()
-{
-	printBar(getDiskspace("/"), "Root");
-	printBar(getDiskspace("/data"), "Data");
-}
-
-function makeRAMBars()
-{
-	printBar(getFreeRam());
-}
-
-function makeLoadBars()
-{
-	printBar(getLoad(0), "1 min");
-	printBar(getLoad(1), "5 min");
-	printBar(getLoad(2), "15 min");
 }
 
 function getFreeRam()
@@ -53,18 +56,5 @@ function getDiskspace($dir)
 function getLoad($id)
 {
 	return 100 * $GLOBALS['loads'][$id];
-}
-
-function printBar($value, $name = "")
-{
-	if ($name != "") echo '<!-- ' . $name . ' -->';
-	echo '<div>';
-		if ($name != "")
-			echo $name . ": ";
-			echo $value . "%";
-		echo '<div class="progress progress-warning progress-striped active">';
-			echo '<div class="bar" style="width: ' . $value . '%"></div>';
-		echo '</div>';
-	echo '</div>';
 }
 ?>

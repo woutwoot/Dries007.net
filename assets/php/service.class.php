@@ -31,9 +31,9 @@ class service
 	
 	function makeButton()
 	{
-		$icon = '<i class="icon-' . ($this->status ? 'ok' : 'remove') . ' icon-white"></i>';
+		$icon = '<i class="fa fa-' . ($this->status ? 'check' : 'times') . ' fa-fw"></i>';
 		$btn = $this->status ? 'success' : 'warning';
-		$prefix = $this->url == "" ? '<button class="btn btn-mini btn-' . $btn . ' disabled">' : '<a href="' . $this->url . '" class="btn btn-mini btn-' . $btn . '">';
+		$prefix = $this->url == "" ? '<button class="btn btn-xs btn-' . $btn . ' disabled">' : '<a href="' . $this->url . '" class="btn btn-xs btn-' . $btn . '">';
 		$txt = $this->status ? 'Online' : 'Offline';
 		$suffix = $this->url == "" ? '</button>' : '</a>';
 		
