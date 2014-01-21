@@ -85,23 +85,23 @@ THE SOFTWARE.
         table {
             table-layout: fixed;
         }
-		table th, table td {
-		    overflow: hidden;
-		}
+        table th, table td {
+            overflow: hidden;
+        }
 		
-		html, body {
+        html, body {
 	        height: 100%; text-align: center;
         }
 	    
         #wrap {
           min-height: 100%;
           height: auto;
-          margin: 0 auto -60px;
-          padding: 0 0 60px;
+          margin: 0 auto -70px;
+          padding: 0 0 70px;
         }
         
         #footer {
-          height: 60px;
+          height: 70px;
         }
         </style>
 		
@@ -137,6 +137,7 @@ THE SOFTWARE.
     							<th style="text-align: right;width: 50%">Service</td>
     							<th style="text-align: left;">Status</td>
     						</thead>
+                <thead>
     						<? foreach($services as $service){ ?>
     						<tr>
     							<td style="text-align: right;"><? echo $service->name; ?></td>
@@ -193,7 +194,7 @@ THE SOFTWARE.
 				            RAM Usage
 				        </div>
 				        <div class="panel-body">
-				            <div><span id="ramT">1 min: 1%</span>
+				            <div><span id="ramT"></span>
 				                <div class="progress progress-striped active">
 				                    <div class="progress-bar progress-bar-warning" style="width: 100%" id="ramPB">
 				                    </div>
@@ -236,7 +237,7 @@ THE SOFTWARE.
 					<a href="http://www.bootstrapcdn.com/">Bootstrap CDN</a> in 
 					<? $end = microtime(true); echo round(($end - $start), 4);?> sec.
 				</p>
-			  </div>
+			</div>
 		</div>
 		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
           <div class="modal-dialog">
@@ -314,10 +315,10 @@ THE SOFTWARE.
                         document.getElementById('sys1minT').innerHTML  = "1 min: " + result["load"]["1 min"] + "%";
                         document.getElementById('sys1minPB').style.width  = result["load"]["1 min"] + "%";
                         // LOAD 5 min
-                        document.getElementById('sys5minT').innerHTML  = "1 min: " + result["load"]["5 min"] + "%";
+                        document.getElementById('sys5minT').innerHTML  = "5 min: " + result["load"]["5 min"] + "%";
                         document.getElementById('sys5minPB').style.width  = result["load"]["5 min"] + "%";
                         // LOAD 15 min
-                        document.getElementById('sys15minT').innerHTML  = "1 min: " + result["load"]["15 min"] + "%";
+                        document.getElementById('sys15minT').innerHTML  = "15 min: " + result["load"]["15 min"] + "%";
                         document.getElementById('sys15minPB').style.width  = result["load"]["15 min"] + "%";
                         
                         // RAM
