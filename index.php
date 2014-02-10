@@ -45,7 +45,8 @@ THE SOFTWARE.
 		new service("Webmin", 81, "http://webmin.dries007.net"),
 		new service("Jenkins", 8080, "http://jenkins.dries007.net"),
 		new service("Transmission", 9091, "http://transmission.dries007.net"),
-        new service("Btsync", 8888, "http://btsync.dries007.net")
+    new service("Btsync", 8888, "http://btsync.dries007.net"),
+    new service("ZNC", 6969, "http://znc.dries007.net")
 	);
 	
 	$links = array(
