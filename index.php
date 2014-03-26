@@ -46,7 +46,8 @@ THE SOFTWARE.
 		new service("Jenkins", 8080, "http://jenkins.dries007.net"),
 		new service("Transmission", 9091, "http://transmission.dries007.net"),
     new service("Btsync", 8888, "http://btsync.dries007.net"),
-    new service("ZNC", 6969, "http://znc.dries007.net")
+    new service("ZNC", 6969, "http://znc.dries007.net"),
+    new service("Maven", 8081, "http://maven.dries007.net")
 	);
 	
 	$links = array(
@@ -56,13 +57,15 @@ THE SOFTWARE.
 			new link("Bitbucket", "https://bitbucket.com/dries007/", "bitbucket"),
 			new link("Youtube", "https://www.youtube.com/user/driesk007/", "youtube-play"),
 			new link("Twitter", "https://twitter.com/driesk007/", "twitter"),
+			new link("Facebook", "https://www.facebook.com/driesk007/", "facebook-square"),
 			new link("Email", "#contactModal", "envelope", "data-toggle=\"modal\"  data-target=\"#myModal\"")
 		),
 		"Links" => array(
 			new link("dtools.net", "http://dtools.net", "wrench"),
+			new link("Github report card", "http://osrc.dfm.io/dries007", "github"),
 			new link("Downloads", "/downloads/", "download"),
-            new link("Screenshots", "/screenshots/", "crosshairs"),
-            new link("Geogebra", "/geogebra/", "superscript"),
+      new link("Screenshots", "/screenshots/", "crosshairs"),
+      new link("Geogebra", "/geogebra/", "superscript"),
 			new link("Minecraft Capes", "/capes/", "bookmark"),
 			new link("The Hacker Manifesto", "/manifesto/", "quote-left"),
 			new link("Graph", "/graph/", "pencil")
