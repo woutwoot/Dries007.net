@@ -150,21 +150,7 @@ THE SOFTWARE.
     				    	<?}?>
     				    </table>
     				    </div>
-                        <div class="panel-footer">
-                            <!-- Pr0xy -->
-                            <span>I &lt;/3 censorship.</span>
-                            <div class="input-group">
-                                <span class="input-group-btn">
-                                    <button class="btn btn-success" id="sslBtn" onClick="toggleSSL();"><i class="fa fa-lock fa-fw" id="sslIco"></i> SSL</button>
-                                </span>
-                                <input type="text" class="form-control" id="url" placeholder="URL here please..." onkeydown="if (event.keyCode == 13) document.getElementById('goBtn').click();">
-                                <span class="input-group-btn">
-                                    <button class="btn btn-default" id="goBtn" onClick="goPr0xy();">Go!</button>
-                                </span>
-                            </div>
-                            <span class="muted">Currently not usable with login systems, sorry.</span>
-                        </div>
-                    </div>
+          </div>
 				</div>
 				<!-- Server stats -->
 				<div class="col-sm-3">
@@ -278,28 +264,6 @@ THE SOFTWARE.
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 		<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
         <script type="text/javascript">
-            var ssl = true;
-            function toggleSSL()
-            {
-                ssl = !ssl;
-                if (!ssl)
-                {
-                    document.getElementById('sslBtn').className = "btn btn-warning";
-                    document.getElementById('sslIco').className = "fa fa-unlock-alt fa-fw";
-                }
-                else
-                {
-                    document.getElementById('sslBtn').className = "btn btn-success";
-                    document.getElementById('sslIco').className = "fa fa-lock fa-fw";
-                }
-                
-            }
-            
-            function goPr0xy()
-            {
-                location.href = 'http' + (ssl ? 's' : '') + '://pr0xy.dries007.net/' + document.getElementById('url').value;
-            }
-            
             function refreshBars()
             {
                 if (window.XMLHttpRequest)
