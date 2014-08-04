@@ -37,17 +37,23 @@ THE SOFTWARE.
 	include("assets/php/link.class.php");
 	include("assets/php/serverstats.php");
 	
-	$services = array(
+	$localservices = array(
 		new service("Website Http", 80, "http://dries007.net", "dries007.net"),
 		new service("Website Https", 443, "https://dries007.net", "dries007.net"),
 		new service("MySQL", 3306),
 		new service("SSH", 22),
 		new service("Webmin", 81, "http://webmin.dries007.net"),
-		new service("Jenkins", 8080, "http://jenkins.dries007.net"),
 		new service("Transmission", 9091, "http://transmission.dries007.net"),
-    new service("Btsync", 8888, "http://btsync.dries007.net"),
     new service("ZNC", 6969, "http://znc.dries007.net"),
     new service("Maven", 8081, "http://maven.dries007.net")
+	);
+  
+  $vpsservices = array(
+		new service("Website Http", 80, "http://vps1.dries007.net", "vps1.dries007.net"),
+		new service("MySQL", 3306, "", "vps1.dries007.net"),
+		new service("SSH", 22, "", "vps1.dries007.net"),
+		new service("Webmin", 10000, "http://webmin.veerle-v.be", "vps1.dries007.net"),
+		new service("Jenkins", 8080, "http://jenkins.dries007.net", "vps1.dries007.net")
 	);
 	
 	$links = array(
@@ -58,6 +64,8 @@ THE SOFTWARE.
 			new link("Youtube", "https://www.youtube.com/user/driesk007/", "youtube-play"),
 			new link("Twitter", "https://twitter.com/driesk007/", "twitter"),
 			new link("Facebook", "https://www.facebook.com/driesk007/", "facebook-square"),
+      new link("Patreon", "https://www.patreon.com/dries007/", "money"),
+      new link("PayPal", "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=M6XDAP29UDX7Q", "money"),
 			new link("Email", "#contactModal", "envelope", "data-toggle=\"modal\"  data-target=\"#myModal\"")
 		),
 		"Links" => array(
@@ -113,7 +121,7 @@ THE SOFTWARE.
 	<body>
 		<div class="container container-narrow" id="wrap">
 			<div class="row" style="padding-top: 30px;">
-			    <p><img src="assets/img/dries007.png" style="height: 80px;" class="img-rounded" /></p>
+			    <p><img src="/assets/img/dries007.png" style="height: 80px;" class="img-rounded" /></p>
 			</div>
 			<div>
 				<!-- Nav sidebar -->
@@ -141,13 +149,35 @@ THE SOFTWARE.
     							<th style="text-align: right;width: 50%">Service</td>
     							<th style="text-align: left;">Status</td>
     						</thead>
-                <thead>
-    						<? foreach($services as $service){ ?>
+                <tbody>
+                <? foreach($localservices as $service){ ?>
     						<tr>
     							<td style="text-align: right;"><? echo $service->name; ?></td>
     							<td style="text-align: left;"><? echo $service->makeButton(); ?></td>
     						</tr>
     				    	<?}?>
+                </tbody>
+    				    </table>
+    				    </div>
+          </div>
+          <div class="panel panel-default">
+					    <div class="panel-heading">
+					        VPS 1
+					    </div>
+					    <div class="panel-body">
+    					<table class="table table-hover table-condensed">
+    						<thead>
+    							<th style="text-align: right;width: 50%">Service</td>
+    							<th style="text-align: left;">Status</td>
+    						</thead>
+                <tbody>
+                <? foreach($vpsservices as $service){ ?>
+    						<tr>
+    							<td style="text-align: right;"><? echo $service->name; ?></td>
+    							<td style="text-align: left;"><? echo $service->makeButton(); ?></td>
+    						</tr>
+    				    	<?}?>
+                </tbody>
     				    </table>
     				    </div>
           </div>
@@ -206,6 +236,12 @@ THE SOFTWARE.
 				            <div><span id="diskDT"></span>
 				                <div class="progress progress-striped active">
 				                    <div class="progress-bar progress-bar-warning" style="width: 100%" id="diskDPB">
+				                    </div>
+			                    </div>
+				            </div>
+                    <div><span id="diskBT"></span>
+				                <div class="progress progress-striped active">
+				                    <div class="progress-bar progress-bar-warning" style="width: 100%" id="diskBPB">
 				                    </div>
 			                    </div>
 				            </div>
@@ -300,6 +336,10 @@ THE SOFTWARE.
                         // DISK Data
                         document.getElementById('diskDT').innerHTML  = "Data: " + result["disk"]["Data"] + "%";
                         document.getElementById('diskDPB').style.width  = result["disk"]["Data"] + "%";
+                        
+                        // DISK Backup
+                        document.getElementById('diskBT').innerHTML  = "Backup: " + result["disk"]["Backup"] + "%";
+                        document.getElementById('diskBPB').style.width  = result["disk"]["Backup"] + "%";
                     }
                 }
                 xmlhttp.open("GET", "assets/php/serverstats.php?progressbars", false );

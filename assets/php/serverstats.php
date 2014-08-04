@@ -11,18 +11,20 @@ if (isset($_GET["progressbars"]))
 
 function getPBObject()
 {
-        $load["1 min"] = getLoad(0);
-    	$load["5 min"] = getLoad(1);
-    	$load["15 min"] = getLoad(2);
-	$responce["load"] = $load;
+    $load["1 min"] = getLoad(0);
+    $load["5 min"] = getLoad(1);
+    $load["15 min"] = getLoad(2);
+  $responce["load"] = $load;
 	
-    $responce["ram"] = getFreeRam();
+  $responce["ram"] = getFreeRam();
     
-        $disk["Root"] = getDiskspace("/");
-	    $disk["Data"] = getDiskspace("/data");
-    $responce["disk"] = $disk;
+    $disk["Root"] = getDiskspace("/");
+    $disk["Data"] = getDiskspace("/media/Data");
+    $disk["Backup"] = getDiskspace("/media/Backup");
     
-    return $responce;
+  $responce["disk"] = $disk;
+    
+  return $responce;
 }
 	
 function getSystemMemInfo()
