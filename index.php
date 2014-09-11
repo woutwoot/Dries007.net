@@ -44,8 +44,7 @@ THE SOFTWARE.
 		new service("SSH", 22),
 		new service("Webmin", 81, "http://webmin.dries007.net"),
 		new service("Transmission", 9091, "http://transmission.dries007.net"),
-    new service("ZNC", 6969, "http://znc.dries007.net"),
-    new service("Maven", 8081, "http://maven.dries007.net")
+    new service("ZNC", 6969, "http://znc.dries007.net")
 	);
   
   $vpsservices = array(
@@ -53,7 +52,8 @@ THE SOFTWARE.
 		new service("MySQL", 3306, "", "vps1.dries007.net"),
 		new service("SSH", 22, "", "vps1.dries007.net"),
 		new service("Webmin", 10000, "http://webmin.veerle-v.be", "vps1.dries007.net"),
-		new service("Jenkins", 8080, "http://jenkins.dries007.net", "vps1.dries007.net")
+		new service("Jenkins", 8080, "http://jenkins.dries007.net", "vps1.dries007.net"),
+    new service("Maven repo", 8081, "http://www.doubledoordev.net/artifactory", "vps1.dries007.net")
 	);
 	
 	$links = array(
@@ -82,71 +82,70 @@ THE SOFTWARE.
 	
 	?>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <title>Dries007.net</title>
-        <meta name="author" content="Dries007">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <!-- Le styles -->
-        <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
-        <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-        <link href="//netdna.bootstrapcdn.com/bootswatch/3.0.3/slate/bootstrap.min.css" rel="stylesheet">
-        
-        <!-- Custom style for footer, centering of all text and the table -->
-        <style type="text/css">
-        table {
-            table-layout: fixed;
-        }
-        table th, table td {
-            overflow: hidden;
-        }
-		
-        html, body {
-	        height: 100%; text-align: center;
-        }
-	    
-        #wrap {
-          min-height: 100%;
-          height: auto;
-          margin: 0 auto -70px;
-          padding: 0 0 70px;
-        }
-        
-        #footer {
-          height: 70px;
-        }
-        </style>
-		
+  <head>
+    <meta charset="utf-8">
+    <title>Dries007.net</title>
+    <meta name="author" content="Dries007">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Le styles -->
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    <link href="//netdna.bootstrapcdn.com/bootswatch/3.0.3/slate/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Custom style for footer, centering of all text and the table -->
+    <style type="text/css">
+    table {
+        table-layout: fixed;
+    }
+    table th, table td {
+        overflow: hidden;
+    }
+
+    html, body {
+      height: 100%; text-align: center;
+    }
+  
+    #wrap {
+      min-height: 100%;
+      height: auto;
+      margin: 0 auto -70px;
+      padding: 0 0 70px;
+    }
+    
+    #footer {
+      height: 70px;
+    }
+    </style>		
 	</head>
 	<body>
-		<div class="container container-narrow" id="wrap">
+		<div class="container" id="wrap">
 			<div class="row" style="padding-top: 30px;">
-			    <p><img src="/assets/img/dries007.png" style="height: 80px;" class="img-rounded" /></p>
+        <p><img src="/assets/img/dries007.png" style="height: 80px;" class="img-rounded" /></p>
 			</div>
 			<div>
 				<!-- Nav sidebar -->
 				<div class="col-sm-3">
-                    <? foreach ($links as $catName => $cat) {?>
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <? echo $catName;  ?>
-                        </div>
-                        <div class="list-group">
+          <? foreach ($links as $catName => $cat) {?>
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <? echo $catName;  ?>
+              </div>
+              <div class="list-group">
     						<?foreach ($cat as $link) $link->makeLink(); ?>
     					</div>
     				</div>
-    			    <? } ?>
+          <? } ?>
 				</div>
 				<!-- Services -->
-				<div class="col-sm-6">
+				<div class="col-sm-5">
 					<div class="panel panel-default">
-					    <div class="panel-heading">
-					        Services
-					    </div>
-					    <div class="panel-body">
+            <div class="panel-heading">
+              Services
+            </div>
+            <div class="panel-body">
     					<table class="table table-hover table-condensed">
     						<thead>
-    							<th style="text-align: right;width: 50%">Service</td>
+                  <th style="text-align: right;width: 50%">Service</td>
     							<th style="text-align: left;">Status</td>
     						</thead>
                 <tbody>
@@ -157,96 +156,132 @@ THE SOFTWARE.
     						</tr>
     				    	<?}?>
                 </tbody>
-    				    </table>
-    				    </div>
+              </table>
+            </div>
           </div>
           <div class="panel panel-default">
-					    <div class="panel-heading">
-					        VPS 1
-					    </div>
-					    <div class="panel-body">
-    					<table class="table table-hover table-condensed">
-    						<thead>
-    							<th style="text-align: right;width: 50%">Service</td>
-    							<th style="text-align: left;">Status</td>
-    						</thead>
+            <div class="panel-heading">
+              VPS 1
+            </div>
+            <div class="panel-body">
+              <table class="table table-hover table-condensed">
+                <thead>
+                  <th style="text-align: right;width: 50%">Service</td>
+                  <th style="text-align: left;">Status</td>
+                </thead>
                 <tbody>
-                <? foreach($vpsservices as $service){ ?>
-    						<tr>
-    							<td style="text-align: right;"><? echo $service->name; ?></td>
-    							<td style="text-align: left;"><? echo $service->makeButton(); ?></td>
-    						</tr>
-    				    	<?}?>
+                  <? foreach($vpsservices as $service){ ?>
+                    <tr>
+                      <td style="text-align: right;"><? echo $service->name; ?></td>
+                      <td style="text-align: left;"><? echo $service->makeButton(); ?></td>
+                    </tr>
+                  <?}?>
                 </tbody>
-    				    </table>
-    				    </div>
+              </table>
+            </div>
           </div>
 				</div>
-				<!-- Server stats -->
-				<div class="col-sm-3">
-				    <div class="panel panel-default">
-				        <div class="panel-heading">
-				            System load
-				        </div>
-				        <div class="panel-body">
-				            <div><span id="sys1minT"></span>
-				                <div class="progress progress-striped active">
-				                    <div class="progress-bar progress-bar-warning" style="width: 100%" id="sys1minPB">
-				                    </div>
-			                    </div>
-				            </div>
-				            <div><span id="sys5minT"></span>
-				                <div class="progress progress-striped active">
-				                    <div class="progress-bar progress-bar-warning" style="width: 100%" id="sys5minPB">
-				                    </div>
-			                    </div>
-				            </div>
-				            <div><span id="sys15minT"></span>
-				                <div class="progress progress-striped active">
-				                    <div class="progress-bar progress-bar-warning" style="width: 100%" id="sys15minPB">
-				                    </div>
-			                    </div>
-				            </div>
-				        </div>
-				    </div>
-				    <div class="panel panel-default">
-				        <div class="panel-heading">
-				            RAM Usage
-				        </div>
-				        <div class="panel-body">
-				            <div><span id="ramT"></span>
-				                <div class="progress progress-striped active">
-				                    <div class="progress-bar progress-bar-warning" style="width: 100%" id="ramPB">
-				                    </div>
-			                    </div>
-				            </div>
-				        </div>
-			        </div>
-			        <div class="panel panel-default">
-				        <div class="panel-heading">
-				            Disk space
-				        </div>
-				        <div class="panel-body">
-				            <div><span id="diskRT"></span>
-				                <div class="progress progress-striped active">
-				                    <div class="progress-bar progress-bar-warning" style="width: 100%" id="diskRPB">
-				                    </div>
-			                    </div>
-				            </div>
-				            <div><span id="diskDT"></span>
-				                <div class="progress progress-striped active">
-				                    <div class="progress-bar progress-bar-warning" style="width: 100%" id="diskDPB">
-				                    </div>
-			                    </div>
-				            </div>
-                    <div><span id="diskBT"></span>
-				                <div class="progress progress-striped active">
-				                    <div class="progress-bar progress-bar-warning" style="width: 100%" id="diskBPB">
-				                    </div>
-			                    </div>
-				            </div>
-				        </div>
-			        </div>
+				<!-- Server stats 1 -->
+				<div class="col-sm-2">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              Main server
+            </div>
+            <div class="panel-body">
+              <p>System load</p>
+              <div><span id="sys1minT"></span>
+                <div class="progress progress-striped active">
+                  <div class="progress-bar progress-bar-warning" style="width: 100%" id="sys1minPB">
+                  </div>
+                </div>
+              </div>
+              <div><span id="sys5minT"></span>
+                <div class="progress progress-striped active">
+                  <div class="progress-bar progress-bar-warning" style="width: 100%" id="sys5minPB">
+                  </div>
+                </div>
+              </div>
+              <div><span id="sys15minT"></span>
+                <div class="progress progress-striped active">
+                  <div class="progress-bar progress-bar-warning" style="width: 100%" id="sys15minPB">
+                  </div>
+                </div>
+              </div>
+              <hr>
+              <p>RAM usage</p>
+              <div><span id="ramT"></span>
+                <div class="progress progress-striped active">
+                  <div class="progress-bar progress-bar-warning" style="width: 100%" id="ramPB">
+                  </div>
+                </div>
+              </div>
+              <hr>
+              <p>Disk space</p>
+              <div><span id="diskRT"></span>
+                <div class="progress progress-striped active">
+                  <div class="progress-bar progress-bar-warning" style="width: 100%" id="diskRPB">
+                  </div>
+                </div>
+              </div>
+              <div><span id="diskDT"></span>
+                <div class="progress progress-striped active">
+                  <div class="progress-bar progress-bar-warning" style="width: 100%" id="diskDPB">
+                  </div>
+                </div>
+              </div>
+              <div><span id="diskBT"></span>
+                <div class="progress progress-striped active">
+                  <div class="progress-bar progress-bar-warning" style="width: 100%" id="diskBPB">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+				</div>
+        <!-- Server stats 2 -->
+				<div class="col-sm-2">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              VPS 1
+            </div>
+            <div class="panel-body">
+              <p>System load</p>
+              <div><span id="vps1_sys1minT"></span>
+                <div class="progress progress-striped active">
+                  <div class="progress-bar progress-bar-warning" style="width: 100%" id="vps1_sys1minPB">
+                  </div>
+                </div>
+              </div>
+              <div><span id="vps1_sys5minT"></span>
+                <div class="progress progress-striped active">
+                  <div class="progress-bar progress-bar-warning" style="width: 100%" id="vps1_sys5minPB">
+                  </div>
+                </div>
+              </div>
+              <div><span id="vps1_sys15minT"></span>
+                <div class="progress progress-striped active">
+                  <div class="progress-bar progress-bar-warning" style="width: 100%" id="vps1_sys15minPB">
+                  </div>
+                </div>
+              </div>
+              <hr>
+              <p>RAM usage</p>
+              <div><span id="vps1_ramT"></span>
+                <div class="progress progress-striped active">
+                  <div class="progress-bar progress-bar-warning" style="width: 100%" id="vps1_ramPB">
+                  </div>
+                </div>
+              </div>
+              <hr>
+              <p>Disk space</p>
+              <div><span id="vps1_diskRT"></span>
+                <div class="progress progress-striped active">
+                  <div class="progress-bar progress-bar-warning" style="width: 100%" id="vps1_diskRPB">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
 				</div>
 			</div>
 		</div>
@@ -282,21 +317,6 @@ THE SOFTWARE.
             </div><!-- /.modal-content -->
           </div><!-- /.modal-dialog -->
         </div><!-- /.modal -->
-		<!-- Contact modal --
-		<div id="contactModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-				<h3 id="myModalLabel">Contact info</h3>
-			</div>
-			<div class="modal-body">
-				<p>I prefer to be contacted through project related channels but, if its really necessary, you can mail me at the address below.<p>
-				<img src="assets/img/contact.png" style="width: 150px;"/>
-			</div>
-			<div class="modal-footer">
-				<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-			</div>
-		</div>
-		<!-- End Contact modal -->
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 		<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
         <script type="text/javascript">
@@ -343,6 +363,33 @@ THE SOFTWARE.
                     }
                 }
                 xmlhttp.open("GET", "assets/php/serverstats.php?progressbars", false );
+                xmlhttp.send();
+                
+                xmlhttp.onreadystatechange=function()
+                {
+                    if (xmlhttp.readyState==4 && xmlhttp.status==200)
+                    {
+                        var result = JSON.parse(xmlhttp.responseText);
+                        // LOAD 1 min
+                        document.getElementById('vps1_sys1minT').innerHTML  = "1 min: " + result["load"]["1 min"] + "%";
+                        document.getElementById('vps1_sys1minPB').style.width  = result["load"]["1 min"] + "%";
+                        // LOAD 5 min
+                        document.getElementById('vps1_sys5minT').innerHTML  = "5 min: " + result["load"]["5 min"] + "%";
+                        document.getElementById('vps1_sys5minPB').style.width  = result["load"]["5 min"] + "%";
+                        // LOAD 15 min
+                        document.getElementById('vps1_sys15minT').innerHTML  = "15 min: " + result["load"]["15 min"] + "%";
+                        document.getElementById('vps1_sys15minPB').style.width  = result["load"]["15 min"] + "%";
+                        
+                        // RAM
+                        document.getElementById('vps1_ramT').innerHTML  = result["ram"] + "%";
+                        document.getElementById('vps1_ramPB').style.width  = result["ram"] + "%";
+                        
+                        // DISK Root
+                        document.getElementById('vps1_diskRT').innerHTML  = "Root: " + result["disk"]["Root"] + "%";
+                        document.getElementById('vps1_diskRPB').style.width  = result["disk"]["Root"] + "%";
+                    }
+                }
+                xmlhttp.open("GET", "//vps1.dries007.net/assets/php/serverstats.php?progressbars", false );
                 xmlhttp.send();
             }
             
