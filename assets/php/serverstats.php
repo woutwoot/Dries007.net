@@ -41,7 +41,7 @@ function getSystemMemInfo()
 function getFreeRam()
 {
 	$sysInfo = getSystemMemInfo();
-	$free = intval(str_replace(" kb", "", $sysInfo['MemFree']));
+	$free = intval(str_replace(" kb", "", $sysInfo['MemFree'])) + intval(str_replace(" kb", "", $sysInfo['Cached'])) + intval(str_replace(" kb", "", $sysInfo['Buffers']));
 	$total = intval(str_replace(" kb", "", $sysInfo['MemTotal']));
 	$ramUsed =  $total - $free;
 	return sprintf('%.0f',($ramUsed / $total) * 100);
